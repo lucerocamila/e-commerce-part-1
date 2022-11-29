@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
 import { HashRouter, Route, Routes } from 'react-router-dom'
 import Home from './pages/Home'
 import Favorites from './pages/Favorites'
@@ -8,6 +7,7 @@ import Login from './pages/Login'
 import Navbarr from './componentes/Navbar'
 import Loading from './componentes/Loading'
 import { useSelector } from 'react-redux'
+import { Container } from 'react-bootstrap'
 import "./styles/App.css"
 
 function App() {
@@ -21,7 +21,8 @@ const isLoadingg=useSelector(state=>state.loading)
     {isLoadingg&&<Loading/>}
 
     <Navbarr/>
-    
+        <Container className='my-5'>
+
      <Routes>
 
       <Route  path='/' element={<Home/>}/>
@@ -29,9 +30,10 @@ const isLoadingg=useSelector(state=>state.loading)
       <Route  path='/login' element={<Login/>}/>
       <Route  path='/purchases' element={<Favorites/>}/>
 
-     </Routes>
+     </Routes> </Container>
     </div>
     </HashRouter>
+   
   )
 }
 

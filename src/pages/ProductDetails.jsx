@@ -2,17 +2,17 @@ import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { getProducstThunk } from '../store/slices/products.slice';
+import { getProductsThunk } from '../store/slices/products.slice';
 import Button from 'react-bootstrap/esm/Button';
 import { useNavigate } from 'react-router-dom';
 const ProductDetails = () => {
-    const navigatee=useNavigate()
+    const navig=useNavigate()
     const {id}=useParams()
     const dispatch=useDispatch()
     const products=useSelector(state=>state.products)
 
     useEffect(()=>{
-        dispatch(getProducstThunk())
+        dispatch(getProductsThunk())
     },[])
 
     const productDetail=products.find(pro=>pro.id==id)
@@ -57,7 +57,7 @@ const ProductDetails = () => {
                      <li className='price'>{prod.price}$</li>
                     <Button onClick={()=>{
                         setImage(prod.productImgs[0])
-                        navigatee(`/product/${prod.id}`)
+                        navig(`/product/${prod.id}`)
                         }} variant="primary"><i className='bx bx-shopping-bag'></i> Go in details
                     </Button>
                 </ul>
